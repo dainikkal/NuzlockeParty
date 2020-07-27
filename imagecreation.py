@@ -11,10 +11,19 @@ from config import BLOCKSIZE, \
     CIRCLEBONUS, \
     TEXTOFFSET_X, TEXTOFFSET_Y, \
     SPARKLEOFFSET, \
-    SPARKLESOURCE, \
-    IMAGEFOLDER, \
-    QUALITY, \
-    FONT \
+    QUALITY \
+        
+import platform
+if platform.system() == 'Linux':
+    from config_linux import \
+        SPARKLESOURCE, \
+        IMAGEFOLDER, \
+        FONT
+elif platform.system() == 'Windows':
+    from config_win import \
+        SPARKLESOURCE, \
+        IMAGEFOLDER, \
+        FONT
 
 # download_image download the file identified by the id from files.pokefans.net if it is not downloaded already
 # Args:

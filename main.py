@@ -6,11 +6,20 @@ from PIL import Image
 from spinner import spin
 from pokemon_class import pokemon
 from imagecreation import create_image
+
 from config import \
-    SPREAD, SHEET,\
-    QUALITY,\
-    PARTYDESTINATION,\
-    OTHERMONSDESTINATION         
+        SPREAD, SHEET,\
+        QUALITY\
+
+import platform
+if platform.system() == 'Linux':
+    from config_linux import \
+        PARTYDESTINATION,\
+        OTHERMONSDESTINATION
+elif platform.system() == 'Windows':
+    from config_win import \
+        PARTYDESTINATION,\
+        OTHERMONSDESTINATION
 
 # get_poke_dict creates the dictionary that maps pokemon names to their ids(pokedex-variation)
 # Args:
@@ -104,5 +113,5 @@ if __name__ == "__main__":
         asyncio.run(main())
     except KeyboardInterrupt:
         pass    
-    except e:
+    except Exception as e:
         print(e)
