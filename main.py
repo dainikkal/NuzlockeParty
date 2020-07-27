@@ -6,6 +6,7 @@ from PIL import Image
 from spinner import spin
 from pokemon_class import pokemon
 from imagecreation import create_image
+from config_file_management import load_configs, write_configs
 
 from config import \
         SPREAD, SHEET,\
@@ -58,7 +59,7 @@ async def get_images(pkmn_dict, ws):
         id = pkmn_dict[row[3]]
         name  = row[0]
         status = row[1]
-        shiny = row[5]
+        shiny = row[5] 
         mon = pokemon(id, name, status, shiny)
         if   status == "party":     party.append(mon)
         elif status == "alive":     alive.append(mon)
@@ -99,6 +100,7 @@ async def img_gen_main(pkmn_dict, ws):
 
 # main gets the spreadsheet, calls get_poke_dict and calls the img_gen loop
 async def main():
+    await load_configs()
     gc = gspread.service_account()
     sh = gc.open(SPREAD)
 
