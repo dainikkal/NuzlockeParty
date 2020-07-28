@@ -17,8 +17,10 @@ import os.path
 FOLDERSEP = os.path.sep
 if platform.system() == 'Linux':
     import config_linux as configOS
+    default_file = ".data"+FOLDERSEP+"default_linux.txt"
 elif platform.system() == 'Windows':
     import config_win as configOS
+    default_file = ".data"+FOLDERSEP+"default_win.txt"
 
 class NuzlockeParty:
     # init_var initializes variables for the inputs 
@@ -231,7 +233,7 @@ class NuzlockeParty:
 
     # default loads default config, saves it as config, and call constructor
     def default(self):
-        asyncio.run(load_configs(".data"+FOLDERSEP+"default.txt"))  
+        asyncio.run(load_configs(default_file))  
         asyncio.run(save_config())
         self.__init__(self.master)
 
