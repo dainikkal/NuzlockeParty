@@ -3,7 +3,7 @@ import tkinter.ttk as ttk
 from tkinter import filedialog, colorchooser
 from PIL import Image, ImageTk
 import asyncio
-from multiprocessing import Process
+from threading import Thread
 
 import tk_object as tkobj
 from pokemon_class import pokemon
@@ -130,7 +130,7 @@ class NuzlockeParty:
     # init_special initializes button and status label for default and start
     def init_special(self):
         tkobj.tk_Button(self.frame_4, 0, 0, 20, "Default", self.default)
-        self.start = tkobj.tk_Button(self.frame_4, 1, 0, 20, "Start", lambda : self.startFunction(p)).getObj()
+        self.start = tkobj.tk_Button(self.frame_4, 1, 0, 20, "Start", self.startFunction).getObj()
         self.label_status = tkobj.tk_labelColor(self.frame_4, 1, 1, 20, "idle", "w", self.font, "orange").getObj()
 
     # changeValue lambda for entry fields that maps input to configs
@@ -213,22 +213,16 @@ class NuzlockeParty:
         self.updateImg()
 
     # startFunction starts main routine, and swaps start-button and status-label, to stop-button and "running"
-    # Args:
-    #   process | Process: process which is going to be started
-    def startFunction(self, process):
+    def startFunction(self):
         asyncio.run(save_config())
-        self.start.config(text = "stop", command=lambda : self.killFunction(p))
-        process.start()
+        self.start.config(text = "stop", command=self.killFunction)
+        config.LOOP_CONTROL = False
         self.label_status.config(text = "running", fg="green")
     
     # killFunction kills main routine, resets the process and swaps stop-button and status-label, to start-button and "idle"
-    # Args:
-    #    process | Process: process which is going to be started
-    def killFunction(self, process):
-        if process.is_alive():
-            process.terminate()
-        p = Process(target=initRunner, args=())
-        self.start.config(text = "start", command=lambda : self.startFunction(p))
+    def killFunction(self):
+        config.LOOP_CONTROL = True
+        self.start.config(text = "start", command=self.startFunction)
         self.label_status.config(text = "idle", fg="orange")
 
     # default loads default config, saves it as config, and call constructor
@@ -263,15 +257,15 @@ def main():
         root = tk.Tk()
         my_gui = NuzlockeParty(root)
         root.mainloop()
-        if p.is_alive():
-            p.terminate()
+        config.FINISHED = True
+        exit()
+        t.join()
     except Exception as e:
         print(e)
-        if p.is_alive():
-            p.terminate()
         exit()
 
 if __name__ == "__main__":
     # p global process to have it in scope in main but not create it in main to have scoped there
-    p = Process(target=initRunner, args=())
+    t = Thread(target=initRunner, args=())
+    t.start()
     main()

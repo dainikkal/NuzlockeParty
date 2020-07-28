@@ -78,7 +78,13 @@ async def get_images(pkmn_dict, ws):
 #   ws | worksheet: Worksheet on gsheet that holds all the information of the pokemons
 async def img_gen_main(pkmn_dict, ws):    
     old_values = [] 
+
     while(True):
+        if config.FINISHED:
+            exit()
+        if config.LOOP_CONTROL: 
+            await asyncio.sleep(1)
+            continue
         new_values = ws.get_all_values()
         old_con_values = list(chain.from_iterable(old_values))
         new_con_values = list(chain.from_iterable(new_values))
@@ -109,11 +115,12 @@ def init():
 
 
 if __name__ == "__main__":
-    try:
-        asyncio.run(main())
-    except KeyboardInterrupt:
-        pass    
-    except APIError:
-        exit()
-    except Exception as e:
-        print(e)
+    while(True):
+        try:
+            asyncio.run(main())
+        except KeyboardInterrupt:
+            pass    
+        except APIError as e:
+            print(e)
+        except Exception as e:
+            print(e)
