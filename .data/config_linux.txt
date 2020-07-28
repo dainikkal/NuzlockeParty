@@ -16,9 +16,9 @@ COLOR_MISSED grey
 COLOR_RELEASED black
 COLOR_DAY_CARE pink
 COLOR_PENDING blue
-SPARKLESOURCE srcimg\sparkle.png
-IMAGEFOLDER .img\
-PARTYDESTINATION dest\Party.png
-OTHERMONDESTINATION dest\OtherMons.png
-FONT D:\Documents\NuzlockeParty\font\Chewy-Regular.ttf
+SPARKLESOURCE srcimg/sparkle.png
+IMAGEFOLDER .img/
+PARTYDESTINATION dest/Party.png
+OTHERMONDESTINATION dest/OtherMons.png
+FONT /home/db/.fonts/Chewy-Regular.ttf
 FONTSIZE 27

@@ -5,13 +5,15 @@ import config
 import platform
 if platform.system() == 'Linux':
     import config_linux as configOS
+    default_file = ".data/config_linux.txt"
 elif platform.system() == 'Windows':
     import config_win as configOS
+    default_file = ".data/config_win.txt"
 
 # load_config loads the config from the Config file
 # Args:
 #   CONFIG_FILE | str: location of the config file
-async def load_configs(CONFIG_FILE=".data/config.txt"):
+async def load_configs(CONFIG_FILE=default_file):
     if not path.exists(CONFIG_FILE):
         return
     with open(CONFIG_FILE,'r') as f:
@@ -100,6 +102,6 @@ async def write_configs():
 #save_config saves the config into the Config file
 # Args:
 #   CONFIG_FILE | str: location of the config file
-async def save_config(CONFIG_FILE=".data/config.txt"):
+async def save_config(CONFIG_FILE=default_file):
     with open(CONFIG_FILE, "w") as f:
         f.writelines(await(write_configs()))

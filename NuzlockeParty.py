@@ -13,12 +13,12 @@ from runner import init as initRunner
 
 import platform
 import config
+import os.path
+FOLDERSEP = os.path.sep
 if platform.system() == 'Linux':
     import config_linux as configOS
-    FOLDERSEP = "/"
 elif platform.system() == 'Windows':
     import config_win as configOS
-    FOLDERSEP = "\\"
 
 class NuzlockeParty:
     # init_var initializes variables for the inputs 
