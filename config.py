@@ -8,7 +8,6 @@ BLOCKSIZE = 150
 
 #PKMNSIZE size of picture of the pokemon model.
 PKMNSIZE = 90
-PKMNAREA = (PKMNSIZE,PKMNSIZE)
 #PKMNOFFSET from the left of the Block to the pokemon
 PKMNOFFSET_X = int((BLOCKSIZE - PKMNSIZE)/ 2)
 #PKMNOFFSET from the top of the Block to the pokemon
@@ -25,7 +24,7 @@ TEXTOFFSET_Y = PKMNSIZE + PKMNOFFSET_Y + 5
 #FONTSIZE Size of Font
 FONTSIZE = 27
 
-#SPARKLEOFFSET from the top left corner of the PKMNAREA in box X and Y 
+#SPARKLEOFFSET from the top left corner of the pkmn area in box X and Y 
 SPARKLEOFFSET = int(PKMNSIZE *2 /3)
 
 #QUALITY that should be used when saving a picture

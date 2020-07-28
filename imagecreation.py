@@ -49,7 +49,7 @@ async def add_status(bg, status, pos):
 #   bg_copy | image: input image added with image of the pokemon
 async def add_mon(bg, pkmn_id, pos):
     im = Image.open(configOS.IMAGEFOLDER + pkmn_id + ".png")    
-    if im.size != config.PKMNAREA: im = im.resize(config.PKMNAREA)
+    if im.size != (config.PKMNSIZE, config.PKMNSIZE): im = im.resize((config.PKMNSIZE, config.PKMNSIZE))
     bg_copy = bg.copy()
     bg_copy.paste(im, pos, im)
     return bg_copy
@@ -95,7 +95,7 @@ async def create_image(pkmns, min=6):
     PKMNPOS = [(config.BLOCKSIZE*i + config.PKMNOFFSET_X, config.PKMNOFFSET_Y) for i in range(blockcount)]
     TEXTPOS = [(config.BLOCKSIZE*i + config.TEXTOFFSET_X, config.TEXTOFFSET_Y) for i in range(blockcount)]
 
-    bg = Image.new('RGBA',(blockcount*config.BLOCKSIZE, config.BLOCKSIZE),(0,0,0, 255))
+    bg = Image.new('RGBA',(blockcount*config.BLOCKSIZE, config.BLOCKSIZE),(0,0,0, 0))
 
     for i in range(blockcount):
         if i >= len(pkmns): break

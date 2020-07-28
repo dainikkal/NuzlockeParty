@@ -3,10 +3,9 @@ import asyncio
 from itertools import chain
 from PIL import Image
 
-from spinner import spin
 from pokemon_class import pokemon
 from imagecreation import create_image
-from config_file_management import load_configs, write_configs
+from config_file_management import load_configs, save_config
 
 import config
 
@@ -102,7 +101,11 @@ async def main():
     pkmn_dict = await(get_poke_dict(ws))
     ws = sh.worksheet(config.SHEET)
 
-    await asyncio.gather(spin(), img_gen_main(pkmn_dict, ws))
+    await asyncio.gather( img_gen_main(pkmn_dict, ws))
+
+def runner():
+    asyncio.run(main())
+
 
 if __name__ == "__main__":
     try:

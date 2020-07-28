@@ -8,9 +8,8 @@ if platform.system() == 'Linux':
 elif platform.system() == 'Windows':
     import config_win as configOS
 
-CONFIG_FILE = "data/config.txt"
 
-async def load_configs():
+async def load_configs(CONFIG_FILE=".data/config.txt"):
     if not path.exists(CONFIG_FILE):
         return
     with open(CONFIG_FILE,'r') as f:
@@ -20,15 +19,13 @@ async def load_configs():
             l = line.split(" ",1)
             if len(l) == 1 : continue
             config_code = l[0]
-            config_setting = l[1]
+            config_setting = l[1].replace("\n","").replace("\r","")
             if config_code == "SPREAD" : config.SPREAD = config_setting
             if config_code == "SHEET" : config.SHEET = config_setting
 
             if config_code == "BLOCKSIZE" : config.BLOCKSIZE = int(config_setting)
 
             if config_code == "PKMNSIZE" : config.PKMNSIZE = int(config_setting)
-            if config_code == "PKMNAREA" : 
-                config.PKMNAREA = (config.PKMNSIZE,config.PKMNSIZE)
             if config_code == "PKMNOFFSET_X" : config.PKMNOFFSET_X = int(config_setting)
             if config_code == "PKMNOFFSET_Y" : config.PKMNOFFSET_Y = int(config_setting)
 
@@ -98,6 +95,6 @@ async def write_configs():
 
     return [x+"\n" for x in lines]
 
-async def save_config():
+async def save_config(CONFIG_FILE=".data/config.txt"):
     with open(CONFIG_FILE, "w") as f:
         f.writelines(await(write_configs()))

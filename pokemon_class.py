@@ -8,7 +8,7 @@ class pokemon:
     #   name | string: nickname of the pokemon
     #   status | string: status of the pokemon
     #   shiny | Bool: shinyness of the pokemon
-    def __init__(self, id, name, status, shiny=False):
+    def __init__(self, id, name, status, shiny="FALSE"):
         self.id = id + ("-shiny" if shiny == "TRUE" else "")
         self.name = name
         if status == "alive"    : self.status = config.COLOR_ALIVE  
