@@ -1,4 +1,6 @@
 .vscode
 __pycache__
 dest/*
-img/*
+!dest/info.md
+.img/*
+!.img/info.md
