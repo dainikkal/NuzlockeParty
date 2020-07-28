@@ -20,5 +20,5 @@ SPARKLESOURCE srcimg/sparkle.png
 IMAGEFOLDER .img/
 PARTYDESTINATION dest/Party.png
 OTHERMONDESTINATION dest/OtherMons.png
-FONT /home/db/.fonts/Chewy-Regular.ttf
+FONT fonts/Chewy-Regular.ttf
 FONTSIZE 27

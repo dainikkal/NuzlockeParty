@@ -3,11 +3,11 @@ import tkinter.ttk as ttk
 from tkinter import filedialog, colorchooser
 from PIL import Image, ImageTk
 import asyncio
+from multiprocessing import Process
 
 import tk_object as tkobj
 from pokemon_class import pokemon
 from imagecreation import create_image
-from multiprocessing import Process
 from config_file_management import load_configs, save_config
 from runner import init as initRunner
 
