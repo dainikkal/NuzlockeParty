@@ -8,19 +8,13 @@ from pokemon_class import pokemon
 from imagecreation import create_image
 from config_file_management import load_configs, write_configs
 
-from config import \
-        SPREAD, SHEET,\
-        QUALITY\
+import config
 
 import platform
 if platform.system() == 'Linux':
-    from config_linux import \
-        PARTYDESTINATION,\
-        OTHERMONSDESTINATION
+    import config_linux as configOS
 elif platform.system() == 'Windows':
-    from config_win import \
-        PARTYDESTINATION,\
-        OTHERMONSDESTINATION
+    import config_win as configOS 
 
 # get_poke_dict creates the dictionary that maps pokemon names to their ids(pokedex-variation)
 # Args:
@@ -74,10 +68,10 @@ async def get_images(pkmn_dict, ws):
     party = party[:6]
 
     im_party = await create_image(party)
-    im_party.save(PARTYDESTINATION, quality = QUALITY)
+    im_party.save(configOS.PARTYDESTINATION, quality = config.QUALITY)
 
     im_others = await create_image(others)
-    im_others.save(OTHERMONSDESTINATION, quality = QUALITY)
+    im_others.save(configOS.OTHERMONSDESTINATION, quality = config.QUALITY)
 
 # imggen loop infinitly long and looks if there are changes in the last dataset a picture was generated vs the current one and calls get_images().
 # Args:
@@ -102,11 +96,11 @@ async def img_gen_main(pkmn_dict, ws):
 async def main():
     await load_configs()
     gc = gspread.service_account()
-    sh = gc.open(SPREAD)
+    sh = gc.open(config.SPREAD)
 
     ws = sh.worksheet('Pokemon')
     pkmn_dict = await(get_poke_dict(ws))
-    ws = sh.worksheet(SHEET)
+    ws = sh.worksheet(config.SHEET)
 
     await asyncio.gather(spin(), img_gen_main(pkmn_dict, ws))
 
@@ -115,5 +109,5 @@ if __name__ == "__main__":
         asyncio.run(main())
     except KeyboardInterrupt:
         pass    
-    except Exception as e:
+    except e:
         print(e)

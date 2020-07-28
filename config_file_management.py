@@ -56,6 +56,7 @@ async def load_configs():
             if config_code == "OTHERMONSDESTINATION" : configOS.OTHERMONSDESTINATION = config_setting
             
             if config_code == "FONT" : configOS.FONT = config_setting
+            if config_code == "FONTSIZE" : config.FONTSIZE = int(config_setting)
 
 
 async def write_configs():
@@ -93,6 +94,7 @@ async def write_configs():
     lines.append("OTHERMONDESTINATION " +  configOS.OTHERMONSDESTINATION)
     
     lines.append("FONT " +  configOS.FONT)
+    lines.append("FONTSIZE " +  str(config.FONTSIZE))
 
     return [x+"\n" for x in lines]
 

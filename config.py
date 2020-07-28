@@ -22,6 +22,9 @@ TEXTOFFSET_X = PKMNOFFSET_X
 #TEXTOFFSET from the top of the Block to the name
 TEXTOFFSET_Y = PKMNSIZE + PKMNOFFSET_Y + 5
 
+#FONTSIZE Size of Font
+FONTSIZE = 27
+
 #SPARKLEOFFSET from the top left corner of the PKMNAREA in box X and Y 
 SPARKLEOFFSET = int(PKMNSIZE *2 /3)
 

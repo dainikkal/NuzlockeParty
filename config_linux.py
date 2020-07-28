@@ -2,7 +2,7 @@
 SPARKLESOURCE = "srcimg/sparkle.png"
 
 #IMAGEFOLDER Folder where the pokemon source images are downloaded to
-IMAGEFOLDER = "img/"
+IMAGEFOLDER = ".img/"
 PARTYDESTINATION = "dest/Party.png"
 OTHERMONSDESTINATION = "dest/OtherMons.png"
 
