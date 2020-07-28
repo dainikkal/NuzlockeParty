@@ -252,6 +252,7 @@ class NuzlockeParty:
         self.init_preview()
         self.init_image()
         self.init_color()
+        self.init_destination()
         self.init_special()
 
 # main routine for NuzlockeParty
