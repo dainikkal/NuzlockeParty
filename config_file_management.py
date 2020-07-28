@@ -8,7 +8,9 @@ if platform.system() == 'Linux':
 elif platform.system() == 'Windows':
     import config_win as configOS
 
-
+# load_config loads the config from the Config file
+# Args:
+#   CONFIG_FILE | str: location of the config file
 async def load_configs(CONFIG_FILE=".data/config.txt"):
     if not path.exists(CONFIG_FILE):
         return
@@ -55,7 +57,7 @@ async def load_configs(CONFIG_FILE=".data/config.txt"):
             if config_code == "FONT" : configOS.FONT = config_setting
             if config_code == "FONTSIZE" : config.FONTSIZE = int(config_setting)
 
-
+# write_configs writes the config into an array that can be used for f.writelines
 async def write_configs():
     lines = [] 
     lines.append("SPREAD " + config.SPREAD)
@@ -95,6 +97,9 @@ async def write_configs():
 
     return [x+"\n" for x in lines]
 
+#save_config saves the config into the Config file
+# Args:
+#   CONFIG_FILE | str: location of the config file
 async def save_config(CONFIG_FILE=".data/config.txt"):
     with open(CONFIG_FILE, "w") as f:
         f.writelines(await(write_configs()))

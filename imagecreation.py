@@ -2,11 +2,9 @@ from PIL import Image, ImageDraw, ImageFont
 from os import path
 from urllib.request import urlretrieve
 
-import pokemon_class
+#from pokemon_class import pokemon
 
-#import config
-import config
-        
+import config        
 import platform
 if platform.system() == 'Linux':
     import config_linux as configOS

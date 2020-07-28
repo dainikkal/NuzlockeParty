@@ -103,7 +103,8 @@ async def main():
 
     await asyncio.gather( img_gen_main(pkmn_dict, ws))
 
-def runner():
+# init calls main to be used from outside of the file
+def init():
     asyncio.run(main())
 
 
@@ -112,5 +113,7 @@ if __name__ == "__main__":
         asyncio.run(main())
     except KeyboardInterrupt:
         pass    
-    except e:
+    except APIError:
+        exit()
+    except Exception as e:
         print(e)
