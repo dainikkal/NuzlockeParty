@@ -37,7 +37,7 @@ To get your API key you need to give it access first.
     - Search for Google Sheet API in the big top search bar
     - Enable Google Drive API
     
-## Give the Client Access to the Google Sheet
+## Recieve Client Access to the Google Sheet
   - Open the downloaded ``service_account.json`` file with any Editor
   - Copy the ``client_email``
   - Open your copy of the Google Spreadsheet
