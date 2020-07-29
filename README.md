@@ -3,10 +3,12 @@ A tool that fetches information from a google sheet and creates a image for a pa
 It should be a helpful tool for streamers. Especially for Nuzlockes the tool is great to visualize your current party or all pokemon you encountered to their streaming audience.
 
 # Prerequisites:
-Since the tool is fetching data from a google sheet you need to connect it to the api. which is explained in this guide.
+Since the tool is fetching data from a google sheet you need to connect it to the api. 
+Documentation: [gspread Authentication ](https://gspread.readthedocs.io/en/latest/oauth2.html)
+
 
 ## Getting the Google Spreadsheet
-[Google Sheet Templete](https://docs.google.com/spreadsheets/d/1vuRwyKBmP0qiYCc6NR9SaK-5cf0tuJ-JGlO0Zme_yMc/edit?usp=sharing)
+Here you can get to the Google Sheet templete → [Google Sheet Templete](https://docs.google.com/spreadsheets/d/1vuRwyKBmP0qiYCc6NR9SaK-5cf0tuJ-JGlO0Zme_yMc/edit?usp=sharing)
 
 To edit the spreadsheet you need to make a copy, `File` → `Make a Copy`
 
@@ -32,7 +34,7 @@ To get your API key you need to give it access first.
     - Role? ``Project → Editor``
     - Continue
     - Download the file under ``%APPDATA%\gspread\service_account.json`` *create the folder gspread if it does not exist yet*
-      Name it ``service_account.json``
+    - Name it ``service_account.json``
 3. Get Google Sheet Api
     - Search for Google Sheet API in the big top search bar
     - Enable Google Drive API
@@ -42,8 +44,21 @@ To get your API key you need to give it access first.
   - Copy the ``client_email``
   - Open your copy of the Google Spreadsheet
   - Share the Spreadsheet with that ``client_email`` as Editor
+
+## Running via Python:
+If you intend to run the python script instead of the .exe u will need to have installed with:
+- PIL
+- tkinter
+- gspread
     
-### Installation   
-
-
-[gspread Authentication Documentation](https://gspread.readthedocs.io/en/latest/oauth2.html)
+# Installation   
+Once you finished the Prerequisites
+- Windows:
+  * head to [Releases](https://github.com/dainikkal/NuzlockeParty/Releases)
+  * Download the latest zip file and extract it
+  * Run the .exe and enter your config before you hit start
+- Linux:
+```sh
+git clone https://github.com/dainikkal/NuzlockeParty.git
+python NuzlockeParty.py
+```
