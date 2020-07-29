@@ -54,7 +54,7 @@ If you intend to run the python script instead of the .exe u will need to have i
 # Installation   
 Once you finished the Prerequisites
 - Windows:
-  * head to [Releases](https://github.com/dainikkal/NuzlockeParty/Releases)
+  * head to [Releases](https://github.com/dainikkal/NuzlockeParty/releases)
   * Download the latest zip file and extract it
   * Run the .exe and enter your config before you hit start
 - Linux:
