@@ -2,6 +2,8 @@
 A tool that fetches information from a google sheet and creates a image for a party and another image non party mons. 
 It should be a helpful tool for streamers. Especially for Nuzlockes the tool is great to visualize your current party or all pokemon you encountered to their streaming audience.
 
+![](https://i.imgur.com/NrYTtLV.png)
+
 # Prerequisites:
 Since the tool is fetching data from a google sheet you need to connect it to the api. 
 Documentation: [gspread Authentication ](https://gspread.readthedocs.io/en/latest/oauth2.html)
